@@ -6,6 +6,8 @@ import com.scaler.project.productservice.userservice.models.Token;
 import com.scaler.project.productservice.userservice.repos.TokenRepo;
 import com.scaler.project.productservice.userservice.repos.UserRepo;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.DelegatingPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.scaler.project.productservice.userservice.models.User;
 
@@ -17,9 +19,9 @@ public class UserService {
 
     private UserRepo userRepo;
     private TokenRepo tokenRepo;
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    private BCryptPasswordEncoder  bCryptPasswordEncoder;
 
-    public UserService(UserRepo UserRepo, BCryptPasswordEncoder encoder, TokenRepo tokenRepo) {
+    public UserService(UserRepo UserRepo,BCryptPasswordEncoder encoder, TokenRepo tokenRepo) {
         this.userRepo = UserRepo;
         this.bCryptPasswordEncoder = encoder;
         this.tokenRepo = tokenRepo;

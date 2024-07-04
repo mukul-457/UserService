@@ -11,12 +11,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Configuration
-public class BcryptConfig {
+public class EncoderConfig {
 
-    @Bean
-    public BCryptPasswordEncoder getBCryptPasswordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
-
-
+//    @Primary
+//    @Bean
+//    public PasswordEncoder passwordEncoder() {
+//        String idForEncode = "bcrypt";
+//        Map<String, PasswordEncoder> encoderMap = new HashMap<>();
+//        encoderMap.put(idForEncode, new BCryptPasswordEncoder());
+//
+//        return new DelegatingPasswordEncoder(idForEncode, encoderMap);
+//    }
 }
