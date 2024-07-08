@@ -1,6 +1,7 @@
 package com.scaler.project.productservice.userservice.security.models;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.scaler.project.productservice.userservice.models.Role;
 import com.scaler.project.productservice.userservice.models.User;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -11,6 +12,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Collection;
 @JsonDeserialize
 @Getter
@@ -20,7 +22,7 @@ public class CustomUserDetails implements UserDetails {
 
     private String username;
     private String password;
-    private Collection<? extends GrantedAuthority> authorities;
+    private Collection<CustomGrantedAuthority> authorities;
 
     private boolean isAccountNonExpired;
     private boolean isAccountNonLocked;
@@ -37,6 +39,10 @@ public class CustomUserDetails implements UserDetails {
         isAccountNonLocked = true;
         isCredentialsNonExpired = true;
         isEnabled = true;
+        authorities = new ArrayList<>();
+        for(Role role: user.getRoles()){
+            authorities.add(new CustomGrantedAuthority(role));
+        }
     }
 
     @Override

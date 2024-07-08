@@ -15,6 +15,6 @@ import java.util.List;
 public class Role extends BaseModel{
     private String name;
     @ManyToMany
-    @JsonManagedReference
+    @JsonBackReference
     private List<User> users;
 }
