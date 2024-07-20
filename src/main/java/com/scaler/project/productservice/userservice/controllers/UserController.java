@@ -29,6 +29,11 @@ public class UserController {
         return UserDto.fromEntity(user);
     }
 
+
+    @GetMapping("/random")
+    public  UserDto getRandomUser(){
+        return new UserDto("mukul.acharya@metricsream.com", "mukul");
+    }
     @PostMapping("/login")
     public Token login(@RequestBody LoginRequestDto loginDto){
         try {
